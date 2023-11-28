@@ -16,7 +16,7 @@ const pitcherList = (state=['Maud Nelson', 'Ila Borders', 'Don Newcombe', 'CC Sa
 }
 
 const catcherList = (state=['Roy Campanella', 'Elston Howard', 'Kenji Jojima'], action) => {
-    if (action.type === 'ADD_PITCHER') {
+    if (action.type === 'ADD_CATCHER') {
       const newCatcher = action.payload
       return [...state, newCatcher]
     }

@@ -12,29 +12,52 @@ function App() {
   const pitcherList = useSelector((store) => store.pitcherList)
   const catcherList = useSelector((store) => store.catcherList)
 
+  const dispatch = useDispatch()
+
   const handlePitcherNameChange = event => {
     setNewPitcher(event.target.value);
   };
 
   // add new pitcher to the array. this will move to the pitcher reducer!
-  const handlePitcherSubmit = event => {
-    event.preventDefault();
+  // const handlePitcherSubmit = event => {
+  //   event.preventDefault();
     // spread: give me everything in pitcherList, then add this new thing
     // setPitcherList([...pitcherList, newPitcher]);
     // setNewPitcher('');
-  };
+  // };
   
   const handleCatcherNameChange = event => {
     setNewCatcher(event.target.value);
   };
 
   // add new catcher to array. this will move to the catcher reducer!
-  const handleCatcherSubmit = event => {
-    event.preventDefault();
+  // const handleCatcherSubmit = event => {
+  //   event.preventDefault();
     // spread: give me everything in catcherList, then add this new thing
     // setCatcherList([...catcherList, newCatcher]);
     // setNewCatcher('');
-  };
+  // };
+
+
+  const handlePitcherSubmit = (e) => {
+    e.preventDefault()
+    setNewPitcher('');
+
+    dispatch({
+      type: 'ADD_PITCHER',
+      payload: newPitcher
+    })
+  }
+
+  const handleCatcherSubmit = (e) => {
+    e.preventDefault()
+    setNewCatcher('');
+
+    dispatch({
+      type: 'ADD_CATCHER',
+      payload: newCatcher
+    })
+  }
 
   return (
     <div>
