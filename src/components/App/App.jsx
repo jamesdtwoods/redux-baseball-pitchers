@@ -2,9 +2,10 @@ import {useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import TotalPitchers from '../TotalPitchers/TotalPitchers';
 import TotalCatchers from '../TotalCatchers/TotalCatchers';
+import OnTheMound from '../OnTheMound/OnTheMound'
 
 function App() {
-  const [currentPitcher, setCurrentPitcher] = useState('Maud Nelson');
+  // const [currentPitcher, setCurrentPitcher] = useState('Maud Nelson');
   const [currentCatcher, setCurrentCatcher] = useState('Elston Howard');
 
   
@@ -61,14 +62,23 @@ function App() {
     })
   }
 
+  const setCurrentPitcher = (pitcher) => {
+
+    dispatch({
+      type: 'SET_CURRENT_PITCHER',
+      payload: pitcher
+    })
+  }
+
   return (
     <div>
       <h1>Redux Baseball Pitchers</h1>
-      <h2>On the Mound: {currentPitcher}</h2>
+      {/* <h2>On the Mound: {currentPitcher}</h2> */}
+      <OnTheMound />
       <h2>Behind the Plate: {currentCatcher}</h2>
       
       <TotalPitchers />
-      <div>Total Catchers: {catcherList.length}</div>
+
       <TotalCatchers />
       <h3>All Pitchers</h3>
       <form onSubmit={handlePitcherSubmit}>
