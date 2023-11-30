@@ -3,14 +3,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import TotalPitchers from '../TotalPitchers/TotalPitchers';
 import TotalCatchers from '../TotalCatchers/TotalCatchers';
 import OnTheMound from '../OnTheMound/OnTheMound';
-import BehindThePlate from '../BehindThePlate/BehindThePlate'
+import BehindThePlate from '../BehindThePlate/BehindThePlate';
+import PitcherForm from '../PitcherForm/PitcherForm';
 
 function App() {
   // const [currentPitcher, setCurrentPitcher] = useState('Maud Nelson');
   // const [currentCatcher, setCurrentCatcher] = useState('Elston Howard');
 
   
-  const [newPitcher, setNewPitcher] = useState('');
+  // const [newPitcher, setNewPitcher] = useState('');
   const [newCatcher, setNewCatcher] = useState('');
 
   const pitcherList = useSelector((store) => store.pitcherList)
@@ -18,9 +19,9 @@ function App() {
 
   const dispatch = useDispatch()
 
-  const handlePitcherNameChange = event => {
-    setNewPitcher(event.target.value);
-  };
+  // const handlePitcherNameChange = event => {
+  //   setNewPitcher(event.target.value);
+  // };
 
   // add new pitcher to the array. this will move to the pitcher reducer!
   // const handlePitcherSubmit = event => {
@@ -43,15 +44,15 @@ function App() {
   // };
 
 
-  const handlePitcherSubmit = (e) => {
-    e.preventDefault()
-    setNewPitcher('');
+  // const handlePitcherSubmit = (e) => {
+  //   e.preventDefault()
+  //   setNewPitcher('');
 
-    dispatch({
-      type: 'ADD_PITCHER',
-      payload: newPitcher
-    })
-  }
+  //   dispatch({
+  //     type: 'ADD_PITCHER',
+  //     payload: newPitcher
+  //   })
+  // }
 
   const handleCatcherSubmit = (e) => {
     e.preventDefault()
@@ -82,15 +83,12 @@ function App() {
   return (
     <div>
       <h1>Redux Baseball Pitchers</h1>
-      {/* <h2>On the Mound: {currentPitcher}</h2> */}
       <OnTheMound />
-      {/* <h2>Behind the Plate: {currentCatcher}</h2> */}
       <BehindThePlate />
       <TotalPitchers />
-
       <TotalCatchers />
       <h3>All Pitchers</h3>
-      <form onSubmit={handlePitcherSubmit}>
+      {/* <form onSubmit={handlePitcherSubmit}>
         <input
           type="text"
           value={newPitcher}
@@ -98,7 +96,8 @@ function App() {
           placeholder="New Pitcher Name"
         />
         <button type="submit">Add Pitcher</button>
-      </form>
+      </form> */}
+      <PitcherForm />
       <ul>
         {pitcherList.map(pitcher => (
           <li
